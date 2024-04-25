@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.springframework.beans.BeanUtils.copyProperties;
 
-@Service
+@Service("FakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
     private RestTemplate restTemplate ;
     public FakeStoreProductService(RestTemplate restTemplate){

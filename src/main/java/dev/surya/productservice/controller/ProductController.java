@@ -4,13 +4,14 @@ import dev.surya.productservice.dtos.RequestProductDTO;
 import dev.surya.productservice.models.Category;
 import dev.surya.productservice.models.Product;
 import dev.surya.productservice.service.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProductController {
     ProductService productService ;
-    public ProductController(ProductService productService){
+    public ProductController(@Qualifier("SelfProductService") ProductService productService){
         this.productService =productService;
     }
     @PostMapping("/products")
