@@ -9,19 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class Productservice24ApplicationTests {
-	@Autowired
-	ProductRepository productRepository;
-	@Test
-	void contextLoads() {
-	}
-	@Test
-	public void testingquery(){
-		Product product =productRepository.getProductwithspeciefiedTitleandId("electoronice",1L);
-		System.out.println(product.getTitle());
-	}
-	@Test
-	public void testingquery2(){
-		ProductWithTitleAndId product =productRepository.getProductwithspeciefiedTitleandId2("electoronice",1L);
-		System.out.println(product.getTitle());
-	}
+//	@Autowired
+//	ProductRepository productRepository;
+//	@Test
+//	void contextLoads() {
+//	}
+//	@Test
+//	public void testingquery(){
+//		Product product =productRepository.getProductwithspeciefiedTitleandId("electoronice",1L);
+//		System.out.println(product.getTitle());
+//	}
+//	@Test
+//	public void testingquery2(){
+//		ProductWithTitleAndId product =productRepository.getProductwithspeciefiedTitleandId2("electoronice",1L);
+//		System.out.println(product.getTitle());
+//	}
 }

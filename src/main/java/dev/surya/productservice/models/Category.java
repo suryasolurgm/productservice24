@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category extends  BaseModel {
+public class Category extends  BaseModel implements Serializable {
     private String title;
     @OneToMany(mappedBy = "category",cascade = {CascadeType.REMOVE})
     @JsonIgnore

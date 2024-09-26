@@ -3,6 +3,7 @@ package dev.surya.productservice.service;
 import dev.surya.productservice.dtos.FakeStoreProductDto;
 import dev.surya.productservice.models.Category;
 import dev.surya.productservice.models.Product;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,17 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 @Service("FakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
     private RestTemplate restTemplate ;
-    public FakeStoreProductService(RestTemplate restTemplate){
+    private RedisTemplate<String,Object> redisTemplate;
+    public FakeStoreProductService(RestTemplate restTemplate, RedisTemplate<String,Object> redisTemplate){
         this.restTemplate = restTemplate;
+        this.redisTemplate = redisTemplate;
     }
     @Override
     public Product getSingleProduct(Long id) {
+        Product redisProduct = (Product) redisTemplate.opsForValue().get(id + "");
+        if(redisProduct != null){
+            return redisProduct;
+        }
 
         FakeStoreProductDto fakeStoreProductDto = restTemplate.getForObject("https://fakestoreapi.com/products/"+id, FakeStoreProductDto.class);
         Product product = new Product();
@@ -29,6 +36,7 @@ public class FakeStoreProductService implements ProductService {
         Category category = new Category();
         category.setTitle(fakeStoreProductDto.getCategory());
         product.setCategory(category);
+        redisTemplate.opsForValue().set(id + "", product);
         return product;
     }
 

@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Productservice24Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <envs>
+      <env name="DB_URL" value="jdbc:mysql://scalertestdatabase.cpa2g6288vz2.ap-south-1.rds.amazonaws.com:3306/productservice" />
+      <env name="PASSWORD" value="password" />
+      <env name="USERNAME" value="admin" />
+    </envs>
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="productservice24" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="dev.surya.productservice.Productservice24Application" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
